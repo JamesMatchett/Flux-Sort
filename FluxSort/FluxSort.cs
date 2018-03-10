@@ -15,7 +15,7 @@ namespace FluxSort
     }
 
 
-    
+    //Rewrite to exclude LP from OOP type but instead include as static type in sorting alg?
         public class Flux_Sort
         {
             public static List<DataType> Sort(List<DataType> UnsortedList)
@@ -26,9 +26,10 @@ namespace FluxSort
                     {
                         if (P.Value < D.Value)
                         {
-                            D.Value++;
+                            D.LP++;
                         }
                     }
+                    //Dictionay.add(D,D.LP)
                 }
 
                 //find max LP
@@ -37,17 +38,18 @@ namespace FluxSort
                 {
                     if (T.Value > MaxLP)
                     {
-                        MaxLP = T.Value;
+                        MaxLP = T.LP;
                     }
                 }
 
                 //sort and return new list according to listpriority (LP)
                 List<DataType> sortedList = new List<DataType>();
+                //definitely change this to be a dictionary/hash table
                 for (int i = 0; i <= MaxLP; i++)
                 {
                     foreach (DataType E in UnsortedList)
                     {
-                        if (E.Value == i)
+                        if (E.LP == i)
                         {
                             sortedList.Add(E);
                         }
