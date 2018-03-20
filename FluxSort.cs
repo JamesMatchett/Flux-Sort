@@ -14,7 +14,7 @@ namespace FluxSort
             List<int> sortedList = FluxSort(UnsortedList);
             foreach (int q in sortedList)
             {
-                Console.WriteLine(sortedList);
+                Console.WriteLine(q);
 
             }
             Console.ReadKey();
