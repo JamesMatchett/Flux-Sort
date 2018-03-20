@@ -10,70 +10,26 @@ namespace FluxSort
     {
         static void Main(string[] args)
         {
-            //add some test data and run
+            List<int> UnsortedList = new List<int>();
+        }
+
+        static List<int> FluxSort(List<int> UnsortedList)
+        {
+            List<int> SortedList = new List<int>();
+            int Lowest = 0;
+            while (UnsortedList.Count != 0)
+            {
+                foreach (int q in UnsortedList)
+                {
+                    if (Lowest > q)
+                    {
+                        Lowest = q;
+                    }
+                }
+                SortedList.Add(Lowest);
+                UnsortedList.Remove(Lowest);
+            }
+            return SortedList;
         }
     }
-
-
-    //Rewrite to exclude LP from OOP type but instead include as static type in sorting alg?
-        public class Flux_Sort
-        {
-            public static List<DataType> Sort(List<DataType> UnsortedList)
-            {
-                foreach (DataType D in UnsortedList)
-                {
-                    foreach (DataType P in UnsortedList)
-                    {
-                        if (P.Value < D.Value)
-                        {
-                            D.LP++;
-                        }
-                    }
-                    //Dictionay.add(D,D.LP)
-                }
-
-                //find max LP
-                int MaxLP = 0;
-                foreach (DataType T in UnsortedList)
-                {
-                    if (T.Value > MaxLP)
-                    {
-                        MaxLP = T.LP;
-                    }
-                }
-
-                //sort and return new list according to listpriority (LP)
-                List<DataType> sortedList = new List<DataType>();
-                //definitely change this to be a dictionary/hash table
-                for (int i = 0; i <= MaxLP; i++)
-                {
-                    foreach (DataType E in UnsortedList)
-                    {
-                        if (E.LP == i)
-                        {
-                            sortedList.Add(E);
-                        }
-                    }
-                }
-
-                return sortedList;
-            }
-        }
-
-        public class DataType
-        {
-            public int Value { get; set; }
-            public int ListPriority { get; set; }
-
-            public DataType()
-            {
-                ListPriority = 0;
-            }
-
-            public DataType(int _value) : this()
-            {
-                Value = _value;
-            }
-        }
-    }
-
+}
