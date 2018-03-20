@@ -10,13 +10,23 @@ namespace FluxSort
     {
         static void Main(string[] args)
         {
-            List<int> UnsortedList = new List<int>(){5,4,2,4,2,2};
+            List<int> UnsortedList = new List<int>();
+            Random r = new Random();
+            int Elements = 40000;
+            for (int i = 0; i < Elements; i++)
+            {  
+                UnsortedList.Add(r.Next(0, 10000));
+            }
+            DateTime Start = DateTime.Now;
             List<int> sortedList = FluxSort(UnsortedList);
+            DateTime Stop = DateTime.Now;
+
             foreach (int q in sortedList)
             {
                 Console.WriteLine(q);
 
             }
+            Console.WriteLine("Time taken is " + Stop.Subtract(Start).TotalSeconds + " Seconds for " + Elements +" Elements");
             Console.ReadKey();
         }
 
